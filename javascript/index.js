@@ -64,8 +64,16 @@ function initMap() {
   placesOfInterest.forEach((place) => {
       const marker = addMarker(place);
       //Adicionando o listener de click para mudar a cor do ícone quando clicado
-      google.maps.event.addListener(marker, 'click', function () {
+      google.maps.event.addListener(marker, 'click', () => {
         marker.setIcon(activeIcon);
+        showInfoWindow(marker, map);
       });
   });
+}
+
+function showInfoWindow(marker, map) {
+  const infoWindow = new google.maps.InfoWindow({
+    content: `<strong>${marker.title}</strong>`,
+  });
+  infoWindow.open(map, marker);
 }
