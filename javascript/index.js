@@ -2,7 +2,7 @@ console.log('Yet another Hello world');
 
 var map = null;
 
-placesOfInterest = [
+const placesOfInterest = [
     { name: 'Charme da paulista', lat: -23.562172, lng: -46.655794 },
     { name: 'The Blue Pub', lat: -23.563112, lng: -46.650338 },
     { name: 'Veloso', lat: -23.585107, lng: -46.635219 },
@@ -55,6 +55,8 @@ function initMap() {
 
     map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
-    //Adicionando o primeiro marcador como exemplo
-    addMarker(placesOfInterest[0]);
+    //Adicionando todos os marcadores ao mapa
+  placesOfInterest.forEach((place) => {
+      addMarker(place);
+  });
 }
