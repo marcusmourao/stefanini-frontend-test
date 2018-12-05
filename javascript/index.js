@@ -26,8 +26,13 @@ const customIcon = {
     strokeWeight: 3
 };
 
+const activeIcon = {
+  ...customIcon,
+  fillColor: '#ffffff',
+};
+
 function addMarker(marker) {
-    var marker = new google.maps.Marker({
+    return new google.maps.Marker({
         map: map,
         position: new google.maps.LatLng(marker.lat, marker.lng),
         icon: customIcon,
@@ -57,6 +62,10 @@ function initMap() {
 
     //Adicionando todos os marcadores ao mapa
   placesOfInterest.forEach((place) => {
-      addMarker(place);
+      const marker = addMarker(place);
+      //Adicionando o listener de click para mudar a cor do ícone quando clicado
+      google.maps.event.addListener(marker, 'click', function () {
+        marker.setIcon(activeIcon);
+      });
   });
 }
