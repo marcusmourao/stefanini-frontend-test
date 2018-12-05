@@ -17,6 +17,7 @@ const placesOfInterest = [
     { name: 'Rei das Batidas', lat: -23.570613, lng: -46.705977 }
 ];
 
+
 const customIcon = {
     path: 'M0-48c-9.8 0-17.7 7.8-17.7 17.4 0 15.5 17.7 30.6 17.7 30.6s17.7-15.4 17.7-30.6c0-9.6-7.9-17.4-17.7-17.4z',
     fillColor: '#F7B217',
@@ -29,6 +30,11 @@ const customIcon = {
 const activeIcon = {
   ...customIcon,
   fillColor: '#ffffff',
+};
+
+const activeItem = {
+    marker: null,
+    infoWindow: null,
 };
 
 function addMarker(marker) {
@@ -65,15 +71,30 @@ function initMap() {
       const marker = addMarker(place);
       //Adicionando o listener de click para mudar a cor do ícone quando clicado
       google.maps.event.addListener(marker, 'click', () => {
+        closePreviousMarker();
         marker.setIcon(activeIcon);
         showInfoWindow(marker, map);
       });
   });
 }
 
+function closePreviousMarker() {
+  if (activeItem.marker && activeItem.infoWindow) {
+      activeItem.marker.setIcon(customIcon);
+      activeItem.infoWindow.close();
+  }
+}
+
 function showInfoWindow(marker, map) {
   const infoWindow = new google.maps.InfoWindow({
     content: `<strong>${marker.title}</strong>`,
   });
+  activeItem.marker = marker;
+  activeItem.infoWindow = infoWindow;
   infoWindow.open(map, marker);
+  google.maps.event.addListener(infoWindow,'closeclick',() => {
+    marker.setIcon(customIcon);
+  });
+
+
 }
