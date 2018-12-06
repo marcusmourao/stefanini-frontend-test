@@ -14,6 +14,12 @@
           <ion-list-header>
             <ion-label>List of Names</ion-label>
           </ion-list-header>
+          <ion-item lines="full" *ngFor="let vmLegend of legends">
+            <ion-label>
+              {{ vmLegend.legend.name }}
+            </ion-label>
+            <ion-button ion-button block outline>Edit</ion-button>
+          </ion-item>
         </ion-list>
       </ion-col>
     </ion-row>

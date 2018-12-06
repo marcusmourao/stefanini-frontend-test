@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {legends} from "../names/nameslist";
+import {legends} from '../names/nameslist';
 
 @Component({
   selector: 'app-list',
