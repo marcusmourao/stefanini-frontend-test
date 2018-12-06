@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {legends} from '../names/nameslist';
+import {legends as definedLegends} from '../names/nameslist';
 import VMEditLegend from "../../view-models/VMEditLegend";
 
 @Component({
@@ -8,7 +8,7 @@ import VMEditLegend from "../../view-models/VMEditLegend";
   styleUrls: ['edit.page.scss']
 })
 export class EditPage {
-    legends: Array<VMEditLegend> = legends.map(legend => new VMEditLegend(legend));
+    legends: Array<VMEditLegend> = definedLegends.map(legend => new VMEditLegend(legend));
     newLegendName: string = '';
     lastActiveLegend: VMEditLegend = null;
 
