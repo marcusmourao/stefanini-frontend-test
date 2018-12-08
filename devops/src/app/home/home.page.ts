@@ -8,6 +8,7 @@ import * as _ from 'lodash';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit{
+
   loading;
   photos: Array<string> = [];
 
@@ -27,12 +28,12 @@ export class HomePage implements OnInit{
     setTimeout( () => {
       try {
         this.dismissLoading();
-      } catch(err) {
+      } catch (err) {
         console.error(err);
         alert('Error dismissing loader');
       }
 
-    }, 5000)
+    }, 5000);
 
   }
 
@@ -40,7 +41,7 @@ export class HomePage implements OnInit{
     let i = 0;
     while (i < 501) {
       const salt = Math.floor((Math.random() * 300) + 1);
-      this.photos.push(`https://picsum.photos/200/200?image=${salt}`)
+      this.photos.push(`https://picsum.photos/200/200?image=${salt}`);
       i = i + 1;
     }
   }
