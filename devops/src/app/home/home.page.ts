@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { LoadingControlle } from '@ionic/angular';
+import { LoadingController } from '@ionic/angular';
 import * as _ from 'lodash';
 
 @Component({
@@ -31,9 +31,9 @@ export class HomePage {
         console.error(err);
         alert('Error dismissing loader');
       }
-      
+
     }, 5000)
-    
+
   }
 
   randomPhotos() {
