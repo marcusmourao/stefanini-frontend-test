@@ -26,7 +26,7 @@ export class HomePage {
 
     setTimeout( () => {
       try {
-        dismissLoading();
+        this.dismissLoading();
       } catch(err) {
         console.error(err);
         alert('Error dismissing loader');
@@ -39,7 +39,7 @@ export class HomePage {
   randomPhotos() {
     let i = 0;
     while (i < 501) {
-      let salt = Math.floor((Math.random() * 300) + 1);
+      const salt = Math.floor((Math.random() * 300) + 1);
       this.photos.push(`https://picsum.photos/200/200?image=${salt}`)
       i = i + 1;
     }
