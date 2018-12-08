@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {Events} from '@ionic/angular';
 import {legends as definedLegends} from '../names/nameslist';
+import EventsNames from './../../config/events-names';
 import VMEditLegend from "../../view-models/VMEditLegend";
 
 @Component({
@@ -34,7 +35,7 @@ export class EditPage {
   updateLegendName(index) {
         const oldName = this.legends[index].legend.name;
         this.legends[index].updateLegendName(this.newLegendName);
-        this.events.publish('legend:update', oldName, this.newLegendName);
+        this.events.publish(EventsNames.legendUpdate, oldName, this.newLegendName);
   }
 
 }
