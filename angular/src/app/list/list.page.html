@@ -12,11 +12,14 @@
           <ion-list-header>
             <ion-label>List of Names</ion-label>
           </ion-list-header>
-          <ion-item lines="full" *ngFor="let legend of legends">
-            <ion-label>
-              {{ legend }}
-            </ion-label>
-          </ion-item>
+          <ion-reorder-group (ionItemReorder)="reorderItems($event)" disabled="false">
+            <ion-item lines="full" *ngFor="let legend of legends">
+              <ion-label>
+                {{ legend }}
+              </ion-label>
+              <ion-reorder></ion-reorder>
+            </ion-item>
+          </ion-reorder-group>
         </ion-list>
       </ion-col>
     </ion-row>

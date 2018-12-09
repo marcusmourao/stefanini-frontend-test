@@ -24,4 +24,11 @@ export class ListPage {
     ngOnInit() {
 
     }
+
+    reorderItems(indexes) {
+        console.log(indexes);
+        let element = this.legends[indexes.from];
+        this.legends.splice(indexes.from, 1);
+        this.legends.splice(indexes.to, 0, element);
+    }
 }
