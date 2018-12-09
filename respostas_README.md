@@ -3,8 +3,8 @@
 ## Javascript Questão 2:
 
 ### a) No import da api do google maps no index.html, para que servem as tags async e defer?
-R: Com a tag async o download do script é realizado de forma assíncrona, assim o processo de renderização da página no é interrompido enquanto o download é realizado. Após o download o script é executado.
-Com a tag defer o dowload também é realizado de forma assíncrona, porém a execuço do script só começa depois que a renderizaço da página estiver concluída. Por fim, no caso exemplo, o async tem prioridade sobre o defer, então em browsers que suportam async a opço defer é totalmente ignorada, essa é uma abordagem utilizada para proporcionar um fallback em casos em que os navegadores não suportem a tag async
+R: Com a tag async o download do script é realizado de forma assíncrona, assim o processo de renderização da página não é interrompido enquanto o download é realizado. Após o download o script é executado.
+Com a tag defer o dowload também é realizado de forma assíncrona, porém a execução do script só começa depois que a renderização da página estiver concluída. Por fim, no caso exemplo, o async tem prioridade sobre o defer, então em browsers que suportam async a opção defer é totalmente ignorada, essa é uma abordagem utilizada para proporcionar um fallback em casos em que os navegadores não suportem a tag async
 
 ### b) Para que serve o parâmetro &callback=initMap na url da api do google maps?
 R: Esse parâmetro é utilizado para indicar qual será a função chamada após o carregamento da API
@@ -21,19 +21,20 @@ R: window.onload = function initMap()... Com esse trecho de código indicamos qu
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">`
 
-R:<link rel="manifest" href="manifest.json">
+R:
+`<link rel="manifest" href="manifest.json">`
 
 Serve para carregar o arquivo manifesto dessa aplicação. Esse arquivo fornece informações como nome do app. autor, ícone e descrição dentro de um arquivo texto. O arquivo manifesto possibilita que o app seja instalado na tela inicial de um dispositivo afim de proporcionar uma melhor experiência do usuário.
 
-<meta name="theme-color" content="">
+`<meta name="theme-color" content="">`
 
 Utilizada para definir a cor tema do navegador.
 
-<meta name="apple-mobile-web-app-capable" content="yes">
+`<meta name="apple-mobile-web-app-capable" content="yes">`
 
 Possibilita que a aplicação seja executada em full screen em dispositivos mac ios.
 
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
+`<meta name="apple-mobile-web-app-status-bar-style" content="black">`
 
 Define o estilo da barra de status. Vale ressaltar que tal meta não possui efeito caso a anterior não seja definida também.
 
@@ -45,24 +46,67 @@ R: Não, está aplicaço no pode ser considerada um PWA, para que a aplicaço se
 ## Angular Questão 4:
 
 ### a) Para que serve o método ngOnInit, quais são os outros métodos do Angular lifecycle hooks e para que servem?
-R:
+R: `ngOnChanges()`
+É executado quando o Angular redefine alguma propriedade "data-bound". O método recebe como parâmetro um objeto que possue o último estado da propriedade e o seu valor atual
+
+Called before ngOnInit() and whenever one or more data-bound input properties change.
+
+`ngOnInit()`
+Responsável por inicializar a diretiva ou o componente após o Angular realizar a "montagem do componente". É chamado apenas uma vez, depois da primeira chamada de `ngOnChanges()`
+
+`ngDoCheck()`	
+Detecta e executa de acordo com mudanças que o Angular não pode detectar sozinho. É chamado durante toda execução de detecção de mudança.
+
+`ngAfterContentInit()`	
+Executado depois que o Angular projeta todo o conteúdo do componente na view.
+
+ngAfterContentChecked()	
+Executado depois que o Angular projeta todo o conteúdo do componente na view para checar o conteúdo.
+É executado depois de todo `ngDoCheck()`
+
+
+`ngAfterViewInit()`	
+Executado após o Angular inicializar a view do componente corrente e de todos os seus componentes filhos.
+
+`ngAfterViewChecked()`	
+Executado depois que o Angular checa o componente e seus componentes filhos.
+É executado antes de `ngAfterViewInit()` e sempre após `ngAfterContentChecked()`
+
+`ngOnDestroy()`
+É executado para limpar/destruir código não mais utilizado antes do Angular destruir o componente. Nesse método os "watchers" são destruídos e os "listeners" de eventos também, para evitar leaks de memória.
 
 ### b) Neste projeto, estamos usando os componentes gráficos da versão 4 da biblioteca gráfica do Ionic. Nesta versão, os componentes são Web Components. Explique o que são Web Components e explique quais são as vantagens deles.
 R: 
+"Web Components" é um conceito que permitem criar novas tags HTML personalizadas, reutilizáveis e encapsuladas para usar em  páginas web ou em outros componentes que você desejar. Web Componentes funcionam em navegadores modernos e podem ser usados com qualquer biblioteca JavaScript ou framework que funcione com o HTML.
+Todos os Web Components são baseados em tags HTML existentes ou em outros componentes já definidos. Podemos fazer uma pequena assimilação entre Web Components e Templates, pois ambos possuem uma base imutável, são altamente reutilizaveis e podem ter trechos personalizados.
+Além dessas características, cada componente deve ter um conjunto de funcionalidades, as quais ele é capaz de executar independente de outros componentes presentes em sua página.Por exemplo, vamos supor que temos um input que aplica uma máscara de CEP em seu valor e depois faz algumas chamadas de API para conseguir pegar um endereço de acordo com esse CEP. Poderíamos componentizar esse input, assim em qualquer tela da nossa aplicação poderíamos apenas importar esse componente e conseguiríamos obter nossa localização baseada no CEP.
+Vantagens: Altamente modular, fácil manutenção, possibilidade de ser instanciado dinâmicamente, alta coesão e baixo acoplamento.
 
 ### c) Para que serve a tag ngFor do angular?
-R:
+R: A tag ngFor é utilizada para realizar um loop em um objeto/array iterável.
 
 
 ### d) O que o codigo abaixo representa no arquivo list.page.ts?
 `legends: Array<string> = []`
-R
+R: Esse código representa que a classe `ListPage` possuí uma variável de nome legends a qual é do tipo `Array de Strings` e seu valor inicial é um array vazio.
 
 ### e) Como funciona a api Events do Ionic? Para que serve?
-R: 
+R: A API Events do Ionic funciona como um sistema de eventos para a aplicação, essa api funciona com a emissão/publicação de eventos em um certo "namespace" e o registro de um ou mais "listeners" para esse evento. Quando um listener identificada a emissão de um evento ele trata esse evento. Essa api serve para a comunicação de diferentes componentes dentro de uma aplicação.
 
 ### f) O que é flexbox? Para que servem as tags ion-grid, ion-row, ion-col? Quais as vantagens em utilizálas?
-R: 
+R: Flexbox é um modelo de layout da Web CSS3. Com o flexbox é possível que elementos responsivos sejão organizados automaticamente dentro de um container de acordo com o tamanho da tela.
+
+`ion-grid`
+Essa tag é um poderoso sistema de flexbox desenvolvido seguindo a metodologia "Mobile First". Ele indica o início de um contaner flex.
+
+`ion-row`
+É uma tag que representa um componente horizontal que ocupa a largura total disponível dentro de um sistema grid. Essa tag pode conter um número variável de colunas para melhorar a responsividade como um todo.
+
+`ion-col`
+É uma tag que representa uma célula dentro do sitema grid. Toda `ion-col` deve ser definida dentro de uma tag `ion-row`. O conteúdo dentro de uma tag como esta se expande para preencher toda a linha de forma responsiva.
+
+As vantagens de utilizarmos essas tags é que as mesmas possibilitam a implementaão um sistema de alta responsividade de forma elegante e em uma alta velocidade, pois elas abstraem toda a complexidade do mesmo em uma forma que nossos cérebros conseguem entender melhor, assim podemos contruir layouts poderosos, responsivos e performaticos com maior facilidade.
+
 
 ## Angular Questão 6:
 
