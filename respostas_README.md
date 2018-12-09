@@ -112,18 +112,27 @@ As vantagens de utilizarmos essas tags é que as mesmas possibilitam a implement
 
 ### a) Quais foram os problemas que você identificou?
 R:
+1. O projeto não compilava devido ao erro de importação do `LoadingController` corrigido no commit https://github.com/marcusmourao/stefanini-frontend-test/commit/dcf177522e03c9f48decddf47a4c7ea484da23a9
+2. Erro ao esconder modal de "carregando" corrigido no commit https://github.com/marcusmourao/stefanini-frontend-test/commit/ef3e67c7e549a95e925da437a02c38634d18ba49
 
 ### b) Ordene os problemas por ordem de criticidade, ou seja, liste todos os problemas encontrados na ordem de quais deveriam ser corrigidos primeiro em um cenário onde devessemos priorizar as correções.
 R:
+1. Projeto no compilava
+2. Erro ao esconder modal de "carregando"
 
 ### c) Justifique a ordem proposta no item anterior em termos de impacto para os usuários e dificuldade para corrigir o problema.
 R: 
+Considerando que não era possível executar o projeto, considero que o primeiro erro a ser corrigido deveria ser o erro 1 citado anteriormente, pois ele tinha um nível de complexidade extremamente baixo e sem corrgir o mesmo seria impossível realizar qualquer outra correção.
+
+ O segundo erro não permitia que o modal de "carregando" sumisse, e isso causava uma experiência horrível para o usuário. Foi extremamente fácil resolver o problema e com a correção a experiência do usuário no foi mais comprometida.
+ 
 
 ### d) Para que servem os comandos async e await, encontrados na função presentLoading do arquivo home.page.ts?
-R:
+R: O comando `async` indica que o método `presentLoading` é assíncrono, ou seja, sua execução começa, mas isso não impede que o codigo subsequente continue executando. O comando `await` indica que naquele contexto, a próxima linha de código só será executada depois que a função assíncrona `this.loadingController.create...` estiver sido concluída.
 
 ### e) Quais as vantagens de utilizar async/await em códigos javascript/typescript?
-R:
+R: Os comandos `async` e `await` facilitam o entendimento que códigos e chamadas assíncronas, o código fica mais legível por podermos representar mais código com menos termos léxicos e facilita a compreensão de quais pontos o código é executado de forma assíncrona e quais pontos é executado de forma síncrona.
 
 ### f) Explique para que serve a seguinte lib encontrada no arquivo home.page.ts import * as _ from 'lodash';
 R:
+A lib 'lodash' fornece várias funções utilitárias para uma aplicação. Nesse caso estamos realizando a importação de todas as funções/métodos/constantes que foram exportados pela lib e estámos "movendo" tudo para o objeto `_`. Nessa aplicação estamos utilizando apenas a função `isNil(value)`, a qual checa se a variável é `null` ou `undefined`.
