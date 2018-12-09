@@ -1,191 +1,138 @@
+# Folha de respostas
 
-# Inspiring Avaliações Front End
+## Javascript Questão 2:
 
-Bem vindo ao repo de avaliações Front End da Stefanini Inspiring. Agradecemos o seu interesse em se juntar a nós, agora leia as instruções com calma e não deixe de evidenciar o seu progresso mesmo que não consiga concluir totalmente algum item. 
+### a) No import da api do google maps no index.html, para que servem as tags async e defer?
+R: Com a tag async o download do script é realizado de forma assíncrona, assim o processo de renderização da página não é interrompido enquanto o download é realizado. Após o download o script é executado.
+Com a tag defer o dowload também é realizado de forma assíncrona, porém a execução do script só começa depois que a renderização da página estiver concluída. Por fim, no caso exemplo, o async tem prioridade sobre o defer, então em browsers que suportam async a opção defer é totalmente ignorada, essa é uma abordagem utilizada para proporcionar um fallback em casos em que os navegadores não suportem a tag async
 
-Lembre-se que errar é o primeiro passo para o aprendizado e Happy coding.
+### b) Para que serve o parâmetro &callback=initMap na url da api do google maps?
+R: Esse parâmetro é utilizado para indicar qual será a função chamada após o carregamento da API
 
+### c) O que acontece quando removemos o parâmetro &callback=initMap da url da api do google maps? Explique o porque.
+R: Quando removemos o parâmetro &callback nada aparece na tela desse projeto, pois a função que inicializa as funções do Maps e instancia um mapa não é chamada.
 
-## Pré Requisitos:
-O conhecimento no sistema de versionamento git é um pré requisito para esta avaliação, porém, não deve ser um impeditivo para os que não estão familiarizados com a ferramenta, pois a capacidade de pesquisar e aprender novos conceitos também será avaliada e é um requisito de trabalho em nosso dia a dia.
+### d) Descreva pelo menos uma forma de como podemos fazer com que a aplicação funcione corretamente mesmo sem este parâmetro.
+R: window.onload = function initMap()... Com esse trecho de código indicamos que após o carregamento total da página a função initMap() deve ser executada.
 
-Ter uma versão do node.js instalada, utilizamos a versão 10.9.0 para os projetos.
-
-## Regras:
-Esta avliação é composta por pequenas aplicações já criadas nas quais você deverá adicionar algumas funcionalidades conforme informado.
-Também serão feitas algumas questões sobre as aplicações, que deverão ser respondidas.
-
-O formato de entrega da avaliação será feito no github em uma conta de seu nome.
-O projeto deverá ser clonado e as modificações deverão ser commitadas para a sua conta do github. 
-
-Para clonar o projeto, utilize os comandos
-
-`git clone https://github.com/StefaniniInspiring/avaliacoes-frontend.git`
-
-`rm -rf .git/`
-
-As questões de funcionalidades, serão avaliadas analisando os commits que você fizer.
-As perguntas, deverão ser respondidas no arquivo respostas_README.md.
-
-Antes de commitar o arquivo com as respostas, o arquivo respostas_README.md deverá ser renomeado para README.md.
-
-**Não esqueça de responder na folha de respostas as questões 2, 4 e 6!**
-
-Ao final, preencha o [nosso questionário](https://bit.ly/2QD1gc4) onde terá um local para colar a url do repositório onde você commitou as respostas, não esqueça de informá-lo corretamente.
-Link para o questionário: https://bit.ly/2QD1gc4
-
-__Serão avaliados__:
-Qualidade do código (lógica, limpeza, identação, dentre outros)
-A aplicação está funcional? (É possível rodar a aplicação depois das alterações?)
-Resultado das alterações (As alterações feitas levam ao resultado esperado?)
-Coerência das respostas (As respostas das perguntas são claras e demonstram entendimento do assunto?)
-
-Observações:
-Utilize a frequência de commits que julgar necessária para organizar bem o seu trabalho.
-
-# Parte 01 - Javascript
-
-### Questão 1 - Javascript
-Acesse a pasta `avaliacoes-frontend/javascript`
-
-Neste diretório, temos um mapa com alguns pontos de interesse já mapeados no objecto criado com nome placesOfInterest dentro de index.js.
-O projeto poderá ser acessado utilizando o servidor http-server do node.js, para executá-lo, você deverá rodar os seguintes comandos em um terminal dentro da pasta do projeto:
-
-`npm install` <--- para instalar as dependências, como o http-server por exemplo
-
-`./node_modules/http-server/bin/http-server .`   <--- para subir o servidor e servir a aplicação 
-
-O site deverá estar acessível em http://localhost:8080
-
-a) A aplicação exibe um marcador de 1 dos pontos de interesse, localizado na Avenida Paulista ao lado do Parque Trianon em frente ao MASP.
-Modificque o código da aplicação para que ela passe a exibir todos os pontos de interesse listados no Array 'placesOfInterest'.
-
-b) Modifique a aplicação para alterar a cor do marcador de um ponto de interesse quando este for clicado, conforme exemplo:
-![Exemplo](resources/examples/exemplo01.gif)
-
-c) Modifique a aplicação para abrir uma janela com com o nome do ponto de interesse quando clicado, conforme exemplo:
-![Exemplo](resources/examples/exemplo02.gif)
-
-d) Modifique a aplicação para voltar a cor original do marcador ao fechar a janela, conforme exemplo: 
-![Exemplo](resources/examples/exemplo03.gif)
-
-e) Modifique a aplicação para fechar uma janela de um marcador previamente aberta, quando outra janela for clicada. Também deverá restaurar a cor original do marcador peviamente selecionado, cofnrome exemplo:
-![Exemplo](resources/examples/exemplo04.gif)
-
-Desafio)
-Adicione um botão de centralizar mapa, que quando clicado, caso o usuário dê permissão de acessar a localização do navegador, leve o mapa para as coordenadas do usuário.
-
-### Questão 2
-Responda na folha de respostas as perguntas sobre o projeto da questão 1:
-
-a) No import da api do google maps no index.html, para que servem as tags async e defer?
-
-b) Para que serve o parâmetro &callback=initMap na url da api do google maps?
-
-c) O que acontece quando removemos o parâmetro &callback=initMap da url da api do google maps? Explique o porque.
-
-d) Descreva pelo menos uma forma de como podemos fazer com que a aplicação funcione corretamente mesmo sem este parâmetro.
-
-e) Explique para que servem as seguintes tags do index.html: 
+### e) Explique para que servem as seguintes tags do index.html: 
   `<link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">`
-  
-f) Está aplicação pode ser considerada um PWA? Em caso negativo, explique o que falta para que seja.
 
-# Parte 02 - Angular
+R:
+`<link rel="manifest" href="manifest.json">`
 
-A partir de agora, utilizaremos Angular 6 para os projetos. Instale a versão utilizada com o seguinte comando: 
-`npm install -g @angular/cli@6.1.1`
+Serve para carregar o arquivo manifesto dessa aplicação. Esse arquivo fornece informações como nome do app. autor, ícone e descrição dentro de um arquivo texto. O arquivo manifesto possibilita que o app seja instalado na tela inicial de um dispositivo afim de proporcionar uma melhor experiência do usuário.
 
-### Questão 3
+`<meta name="theme-color" content="">`
 
-Acesse a pasta `avaliacoes-frontend/angular`
+Utilizada para definir a cor tema do navegador.
 
-Neste diretório, temos uma aplicação em Angular 6. Para executá-la localmente, execute os comandos
+`<meta name="apple-mobile-web-app-capable" content="yes">`
 
-`cd avaliacoes-frontend/angular`
+Possibilita que a aplicação seja executada em full screen em dispositivos mac ios.
 
-`npm install`
+`<meta name="apple-mobile-web-app-status-bar-style" content="black">`
 
-`ng serve`
-
-A aplicação deverá estar acessível em http://localhost:4200
-
-a) Modifique a aplicação para exibir na primeira aba 'Names List' todos os itens listados no arquivo /avaliacoes-frontend/angular/src/app/names/nameslist.ts.
-Estes itens deverão ser importados em list.page.ts e exibidos na tela conforme o exemplo abaixo:
-![Exemplo](resources/examples/angular_exemplo_01.png)
-
-b) Na aba 'Search', modifique a aplicação para buscar do arquivo /avaliacoes-frontend/angular/src/app/names/nameslist.ts os nomes que contem parte do texto digitado no campo de busca, conforme exemplo:
-![Exemplo](resources/examples/angular_exemplo_02.gif)
-Observações: 
-- A busca deve ignorar letras maiúsculas
-- Ao limpar o campo de busca, deve exibir 0 resultados
-
-c) Na aba 'Edit', modifique a aplicação para buscar do arquivo /avaliacoes-frontend/angular/src/app/names/nameslist.ts e listar na tela, exibindo um botão de editar em cada item, que permite que o nome seja alterado, conforme exemplo abaixo:
-![Exemplo](resources/examples/angular_exemplo_03.gif)
-
-d) Faça com que uma alteração na lista da aba 'Edit' seja refletida na aba 'List', conforme exemplo:
-![Exemplo](resources/examples/angular_exemplo_04.gif)
-Dica, pesquise a API Events, do Ionic Angular
-
-Desafio)
-Modifique a primeira aba para permitir que a lista de nomes seja reordenável, conforme exemplo abaixo:
-![Exemplo](resources/examples/angular_exemplo_desafio.gif)
+Define o estilo da barra de status. Vale ressaltar que tal meta não possui efeito caso a anterior não seja definida também.
 
 
-### Questão 4
-Responda na folha de respostas as perguntas sobre o projeto da questão 2:
+### f) Está aplicação pode ser considerada um PWA? Em caso negativo, explique o que falta para que seja.
+R: Não, está aplicaço no pode ser considerada um PWA, para que a aplicaço seja considerada um PWA falta o arquivo manifest da mesma, assim como algumas otimizações através de services workers que podem habilitar um cache eficiente para a Bilioteca utilizada, possibilitando a utilizaço offline da aplicação e também a utilização de mais recursos do dispositivo como a geolocalizaço por exemplo.
 
-a) Para que serve o método ngOnInit, quais são os outros métodos do Angular lifecycle hooks e para que servem?
 
-b) Neste projeto, estamos usando os componentes gráficos da versão 4 da biblioteca gráfica do Ionic. Nesta versão, os componentes são Web Components.
-Explique o que são Web Components e explique quais são as vantagens deles.
+## Angular Questão 4:
 
-c) Para que serve a tag ngFor do angular?
+### a) Para que serve o método ngOnInit, quais são os outros métodos do Angular lifecycle hooks e para que servem?
+R: `ngOnChanges()`
+É executado quando o Angular redefine alguma propriedade "data-bound". O método recebe como parâmetro um objeto que possue o último estado da propriedade e o seu valor atual
 
-d) O que o codigo abaixo representa no arquivo list.page.ts?
+Called before ngOnInit() and whenever one or more data-bound input properties change.
+
+`ngOnInit()`
+Responsável por inicializar a diretiva ou o componente após o Angular realizar a "montagem do componente". É chamado apenas uma vez, depois da primeira chamada de `ngOnChanges()`
+
+`ngDoCheck()`	
+Detecta e executa de acordo com mudanças que o Angular não pode detectar sozinho. É chamado durante toda execução de detecção de mudança.
+
+`ngAfterContentInit()`	
+Executado depois que o Angular projeta todo o conteúdo do componente na view.
+
+ngAfterContentChecked()	
+Executado depois que o Angular projeta todo o conteúdo do componente na view para checar o conteúdo.
+É executado depois de todo `ngDoCheck()`
+
+
+`ngAfterViewInit()`	
+Executado após o Angular inicializar a view do componente corrente e de todos os seus componentes filhos.
+
+`ngAfterViewChecked()`	
+Executado depois que o Angular checa o componente e seus componentes filhos.
+É executado antes de `ngAfterViewInit()` e sempre após `ngAfterContentChecked()`
+
+`ngOnDestroy()`
+É executado para limpar/destruir código não mais utilizado antes do Angular destruir o componente. Nesse método os "watchers" são destruídos e os "listeners" de eventos também, para evitar leaks de memória.
+
+### b) Neste projeto, estamos usando os componentes gráficos da versão 4 da biblioteca gráfica do Ionic. Nesta versão, os componentes são Web Components. Explique o que são Web Components e explique quais são as vantagens deles.
+R: 
+"Web Components" é um conceito que permitem criar novas tags HTML personalizadas, reutilizáveis e encapsuladas para usar em  páginas web ou em outros componentes que você desejar. Web Componentes funcionam em navegadores modernos e podem ser usados com qualquer biblioteca JavaScript ou framework que funcione com o HTML.
+Todos os Web Components são baseados em tags HTML existentes ou em outros componentes já definidos. Podemos fazer uma pequena assimilação entre Web Components e Templates, pois ambos possuem uma base imutável, são altamente reutilizaveis e podem ter trechos personalizados.
+Além dessas características, cada componente deve ter um conjunto de funcionalidades, as quais ele é capaz de executar independente de outros componentes presentes em sua página.Por exemplo, vamos supor que temos um input que aplica uma máscara de CEP em seu valor e depois faz algumas chamadas de API para conseguir pegar um endereço de acordo com esse CEP. Poderíamos componentizar esse input, assim em qualquer tela da nossa aplicação poderíamos apenas importar esse componente e conseguiríamos obter nossa localização baseada no CEP.
+Vantagens: Altamente modular, fácil manutenção, possibilidade de ser instanciado dinâmicamente, alta coesão e baixo acoplamento.
+
+### c) Para que serve a tag ngFor do angular?
+R: A tag ngFor é utilizada para realizar um loop em um objeto/array iterável.
+
+
+### d) O que o codigo abaixo representa no arquivo list.page.ts?
 `legends: Array<string> = []`
+R: Esse código representa que a classe `ListPage` possuí uma variável de nome legends a qual é do tipo `Array de Strings` e seu valor inicial é um array vazio.
 
-e) Como funciona a api Events do Ionic? Para que serve?
+### e) Como funciona a api Events do Ionic? Para que serve?
+R: A API Events do Ionic funciona como um sistema de eventos para a aplicação, essa api funciona com a emissão/publicação de eventos em um certo "namespace" e o registro de um ou mais "listeners" para esse evento. Quando um listener identificada a emissão de um evento ele trata esse evento. Essa api serve para a comunicação de diferentes componentes dentro de uma aplicação.
 
-f) O que é flexbox? Para que servem as tags ion-grid, ion-row, ion-col? Quais as vantagens em utilizálas?
+### f) O que é flexbox? Para que servem as tags ion-grid, ion-row, ion-col? Quais as vantagens em utilizálas?
+R: Flexbox é um modelo de layout da Web CSS3. Com o flexbox é possível que elementos responsivos sejão organizados automaticamente dentro de um container de acordo com o tamanho da tela.
+
+`ion-grid`
+Essa tag é um poderoso sistema de flexbox desenvolvido seguindo a metodologia "Mobile First". Ele indica o início de um contaner flex.
+
+`ion-row`
+É uma tag que representa um componente horizontal que ocupa a largura total disponível dentro de um sistema grid. Essa tag pode conter um número variável de colunas para melhorar a responsividade como um todo.
+
+`ion-col`
+É uma tag que representa uma célula dentro do sitema grid. Toda `ion-col` deve ser definida dentro de uma tag `ion-row`. O conteúdo dentro de uma tag como esta se expande para preencher toda a linha de forma responsiva.
+
+As vantagens de utilizarmos essas tags é que as mesmas possibilitam a implementaão um sistema de alta responsividade de forma elegante e em uma alta velocidade, pois elas abstraem toda a complexidade do mesmo em uma forma que nossos cérebros conseguem entender melhor, assim podemos contruir layouts poderosos, responsivos e performaticos com maior facilidade.
 
 
-# Parte 03 - Identificar e corrigir problemas
-Nesta etapa, será avaliada a habilidade em identificar e corrigir problemas comuns de aplicações.
+## Angular Questão 6:
 
-Para executar esta aplicação, rode os comandos:
-`cd avaliacoes-frontend/devops`
+### a) Quais foram os problemas que você identificou?
+R:
+1. O projeto não compilava devido ao erro de importação do `LoadingController` corrigido no commit https://github.com/marcusmourao/stefanini-frontend-test/commit/dcf177522e03c9f48decddf47a4c7ea484da23a9
+2. Erro ao esconder modal de "carregando" corrigido no commit https://github.com/marcusmourao/stefanini-frontend-test/commit/ef3e67c7e549a95e925da437a02c38634d18ba49
 
-`npm install`
+### b) Ordene os problemas por ordem de criticidade, ou seja, liste todos os problemas encontrados na ordem de quais deveriam ser corrigidos primeiro em um cenário onde devessemos priorizar as correções.
+R:
+1. Projeto no compilava
+2. Erro ao esconder modal de "carregando"
 
-`ng serve`
+### c) Justifique a ordem proposta no item anterior em termos de impacto para os usuários e dificuldade para corrigir o problema.
+R: 
+Considerando que não era possível executar o projeto, considero que o primeiro erro a ser corrigido deveria ser o erro 1 citado anteriormente, pois ele tinha um nível de complexidade extremamente baixo e sem corrgir o mesmo seria impossível realizar qualquer outra correção.
 
-A aplicação deverá estar acessível em http://localhost:4200
+ O segundo erro não permitia que o modal de "carregando" sumisse, e isso causava uma experiência horrível para o usuário. Foi extremamente fácil resolver o problema e com a correção a experiência do usuário no foi mais comprometida.
+ 
 
-### Questão 5
+### d) Para que servem os comandos async e await, encontrados na função presentLoading do arquivo home.page.ts?
+R: O comando `async` indica que o método `presentLoading` é assíncrono, ou seja, sua execução começa, mas isso não impede que o codigo subsequente continue executando. O comando `await` indica que naquele contexto, a próxima linha de código só será executada depois que a função assíncrona `this.loadingController.create...` estiver sido concluída.
 
-A aplicação apresenta diversos problemas de estrutura de código e de performance.
+### e) Quais as vantagens de utilizar async/await em códigos javascript/typescript?
+R: Os comandos `async` e `await` facilitam o entendimento que códigos e chamadas assíncronas, o código fica mais legível por podermos representar mais código com menos termos léxicos e facilita a compreensão de quais pontos o código é executado de forma assíncrona e quais pontos é executado de forma síncrona.
 
-Faça todas as alterações que julgar necessárias para corrigir e torná-la mais profissional e com uma performance melhor.
-
-Commite as alterações e mensagens com a frquência que julgar necessárias.
-
-### Questão 6
-Responda na folha de respostas as perguntas sobre o projeto da questão 5:
-
-a) Quais foram os problemas que você identificou?
-
-b) Ordene os problemas por ordem de criticidade, ou seja, liste todos os problemas encontrados na ordem de quais deveriam ser corrigidos primeiro em um cenário onde devessemos priorizar as correções.
-
-c) Justifique a ordem proposta no item anterior em termos de impacto para os usuários e dificuldade para corrigir o problema.
-
-d) Para que servem os comandos async e await encontrados na função presentLoading do arquivo home.page.ts?
-
-e) Quais as vantagens de utilizar async/await em códigos javascript/typescript?
-
-f) Explique para que serve a seguinte lib encontrada no arquivo home.page.ts
-`import * as _ from 'lodash';`
-
+### f) Explique para que serve a seguinte lib encontrada no arquivo home.page.ts import * as _ from 'lodash';
+R:
+A lib 'lodash' fornece várias funções utilitárias para uma aplicação. Nesse caso estamos realizando a importação de todas as funções/métodos/constantes que foram exportados pela lib e estámos "movendo" tudo para o objeto `_`. Nessa aplicação estamos utilizando apenas a função `isNil(value)`, a qual checa se a variável é `null` ou `undefined`.
